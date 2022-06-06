@@ -20,7 +20,11 @@ def serialInit():
             bau = 115200
         try:
             ser.baudrate = bau
-            ser.port = 'COM6'
+            ser.port = port
+            ser.parity = serial.PARITY_EVEN
+            ser.stopbits = serial.STOPBITS_TWO
+            ser.bytesize = serial.EIGHTBITS
+
             ser.open()
             print("se conecto")
         except PermissionError:
@@ -30,6 +34,11 @@ def serialInit():
 def desconectar():
     ser.close()
     print("se desconecto")
+def enviarComando():
+    cmd = window.lineComand.text()
+    string = '{}\r\n'.format(cmd)
+    print(cmd)
+    ser.write(string.encode())
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     ui_file_name = "mainWindow.ui"
@@ -53,6 +62,7 @@ if __name__ == "__main__":
     group2.addButton(window.bau3)
     window.btnConnect.clicked.connect(lambda: serialInit())
     window.btnDisconnect.clicked.connect(lambda: desconectar())
+    window.sendBtn.clicked.connect(lambda: enviarComando())
     ui_file.close()
     if not window:
         print(loader.errorString())
