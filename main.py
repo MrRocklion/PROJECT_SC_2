@@ -7,6 +7,9 @@ from PySide6.QtUiTools import QUiLoader
 from PySide6.QtWidgets import QApplication,QButtonGroup
 from PySide6.QtCore import QFile, QIODevice
 ser = serial.Serial()
+global juntas
+juntas = [0,0,0,0,0,0]
+
 def serialInit():
     port = str(window.puerto.text()).upper()
     radio = group2.checkedButton()
@@ -39,6 +42,22 @@ def enviarComando():
     string = '{}\r\n'.format(cmd)
     print(cmd)
     ser.write(string.encode())
+
+
+def moverJoints(joint, i):
+    global juntas
+    if joint == "a":
+        if juntas[i] < 100:
+            juntas[i] = juntas[i]+5
+        else:
+            juntas[i] = 100
+    elif joint == "b":
+        if juntas[i] > 0:
+            juntas[i] = juntas[i]-5
+        else:
+            juntas[i] = 0
+    print(juntas)
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     ui_file_name = "mainWindow.ui"
@@ -52,6 +71,18 @@ if __name__ == "__main__":
     window.op2.clicked.connect(lambda : window.stackedWidget.setCurrentWidget(window.page2))
     window.op3.clicked.connect(lambda : window.stackedWidget.setCurrentWidget(window.page3))
     window.op4.clicked.connect(lambda : window.stackedWidget.setCurrentWidget(window.page4))
+    window.btnJoint1pos.clicked.connect(lambda: moverJoints("a", 0))
+    window.btnJoint1neg.clicked.connect(lambda: moverJoints("b", 0))
+    window.btnJoint2pos.clicked.connect(lambda: moverJoints("a", 1))
+    window.btnJoint2neg.clicked.connect(lambda: moverJoints("b", 1))
+    window.btnJoint3pos.clicked.connect(lambda: moverJoints("a", 2))
+    window.btnJoint3neg.clicked.connect(lambda: moverJoints("b", 2))
+    window.btnJoint4pos.clicked.connect(lambda: moverJoints("a", 3))
+    window.btnJoint4neg.clicked.connect(lambda: moverJoints("b", 3))
+    window.btnJoint5pos.clicked.connect(lambda: moverJoints("a", 4))
+    window.btnJoint5neg.clicked.connect(lambda: moverJoints("b", 4))
+    window.btnJoint6pos.clicked.connect(lambda: moverJoints("a", 5))
+    window.btnJoint6neg.clicked.connect(lambda: moverJoints("b", 5))
     group1 = QButtonGroup()
     group2 = QButtonGroup()
     group1.addButton(window.stop1)
