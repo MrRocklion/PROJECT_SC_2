@@ -56,7 +56,13 @@ def moverJoints(joint, i):
             juntas[i] = juntas[i]-5
         else:
             juntas[i] = 0
-    print(juntas)
+    mensaje = "1;1;EXECJCOSIROP=({},{},{},{},{},{})".format(juntas[0],juntas[1],juntas[2],juntas[3],juntas[4],juntas[5])
+    string = '{}\r\n'.format(mensaje)
+    print(string)
+    ser.write(string.encode())
+    time.sleep(1)
+    ser.write(b'1;1;EXECMOV JCOSIROP\r\n')
+    #1;1;EXECJCOSIROP=(50.00,50.00,30.00,0.00,50.00,10.00)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
@@ -77,8 +83,6 @@ if __name__ == "__main__":
     window.btnJoint2neg.clicked.connect(lambda: moverJoints("b", 1))
     window.btnJoint3pos.clicked.connect(lambda: moverJoints("a", 2))
     window.btnJoint3neg.clicked.connect(lambda: moverJoints("b", 2))
-    window.btnJoint4pos.clicked.connect(lambda: moverJoints("a", 3))
-    window.btnJoint4neg.clicked.connect(lambda: moverJoints("b", 3))
     window.btnJoint5pos.clicked.connect(lambda: moverJoints("a", 4))
     window.btnJoint5neg.clicked.connect(lambda: moverJoints("b", 4))
     window.btnJoint6pos.clicked.connect(lambda: moverJoints("a", 5))
