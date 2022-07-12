@@ -130,15 +130,15 @@ def moverJoints(joint, i):
     global juntas
     global des
     if joint == "a":
-        if juntas[i] < 100:
+        if juntas[i] < 200:
             juntas[i] = juntas[i] + des
         else:
-            juntas[i] = 100
+            juntas[i] = 200
     elif joint == "b":
-        if juntas[i] > 0:
+        if juntas[i] > -200:
             juntas[i] = juntas[i] - des
         else:
-            juntas[i] = 0
+            juntas[i] = -200
     mensaje = "1;1;EXECJCOSIROP=({},{},{},{},{},{})".format(juntas[0], juntas[1], juntas[2], juntas[3], juntas[4],
                                                             juntas[5])
     string = '{}\r\n'.format(mensaje)
