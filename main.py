@@ -117,9 +117,11 @@ def  funcion_4():
     line = ser.readline()
     print(line)
 def  funcion_5():
+    global juntas
     ser.write(b'1;1;EXECJCOSIROP=(0.0,0.0,0.0,0.0,0.0,0.0)\r\n')
     time.sleep(1)
     ser.write(b'1;1;EXECMOV JCOSIROP\r\n')
+    juntas = [0, 0, 0, 0, 0, 0]
     line = ser.readline()
     print(line)
 def  funcion_6():
