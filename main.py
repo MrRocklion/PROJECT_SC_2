@@ -113,7 +113,7 @@ def  funcion_3():
     line = ser.readline()
     print(line)
 def  funcion_4():
-    ser.write(b'1;1;RSTALARM\r\n')
+    ser.write(b'1;1;RSTALRM\r\n')
     line = ser.readline()
     print(line)
 def  funcion_5():
@@ -162,6 +162,7 @@ if __name__ == "__main__":
     window = loader.load(ui_file)
     gripper = CSwitch(active_color="#17A589")
     window.gripper_container.addWidget(gripper,0,Qt.AlignCenter)
+    window.gripContainer.addWidget(gripper,0,Qt.AlignLeft)
     window.op1.clicked.connect(lambda: window.stackedWidget.setCurrentWidget(window.page1))
     window.op2.clicked.connect(lambda: window.stackedWidget.setCurrentWidget(window.page2))
     window.op3.clicked.connect(lambda: window.stackedWidget.setCurrentWidget(window.page3))
