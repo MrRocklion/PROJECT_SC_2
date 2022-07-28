@@ -11,13 +11,15 @@ from CustomWidgetsPyhton.CustomSwitch import CSwitch
 ser = serial.Serial()
 global juntas
 global des
+global des2
 global vel
 
 juntas = [0, 0, 0, 0, 0, 0]
 vel = 0
 des = 1
 
-
+def holaMundo(val):
+    print(f'hola {val}')
 
 def serialInit():
     port = str(window.puerto.text()).upper()
@@ -91,6 +93,11 @@ def selec_velocidad(velocidad):
     window.vel_value.setText(str(velocidad))
     print(velocidad)
 
+def selec_desplazmiento2(desplazamiento):
+    global  des2
+    window.des_modo2.setText(str(desplazamiento))
+    des2 = int(desplazamiento)
+    print(desplazamiento)
 
 def selec_desplazmiento(desplazamiento):
     global  des
@@ -116,6 +123,15 @@ def  funcion_4():
     ser.write(b'1;1;RSTALRM\r\n')
     line = ser.readline()
     print(line)
+def home_modo2():
+    global juntas
+    ser.write(b'1;1;EXECPCOSIROP=(365,25.5,488.25,-1.3,109,6,0)\r\n')
+    time.sleep(1)
+    ser.write(b'1;1;EXECMVS PCOSIROP\r\n')
+    juntas = [365,25.5,488.25,-1.3,109,6,0]
+    line = ser.readline()
+    print(line)
+    window.stackedWidget.setCurrentWidget(window.page3)
 def  funcion_5():
     global juntas
     ser.write(b'1;1;EXECJCOSIROP=(0.0,0.0,0.0,0.0,0.0,0.0)\r\n')
@@ -128,6 +144,27 @@ def  funcion_6():
     ser.write(b'1;1;STOP\r\n')
     line = ser.readline()
     print(line)
+def moverJoints_modo2(joint,i):
+    global juntas
+    global des2
+    if joint == "a":
+        if juntas[i] < 600:
+            juntas[i] = juntas[i] + des2
+        else:
+            juntas[i] = 600
+    elif joint == "b":
+        if juntas[i] > -600:
+            juntas[i] = juntas[i] - des2
+        else:
+            juntas[i] = -600
+    mensaje = "1;1;EXECPCOSIROP=({},{},{},{},{},6,0)".format(juntas[0], juntas[1], juntas[2], juntas[3], juntas[4])
+    string = '{}\r\n'.format(mensaje)
+    print(string)
+    ser.write(string.encode())
+    time.sleep(1)
+    ser.write(b'1;1;EXECMVS PCOSIROP\r\n')
+    # 1;1;EXECJCOSIROP=(50.00,50.00,30.00,0.00,50.00,10.00)
+
 def moverJoints(joint, i):
     global juntas
     global des
@@ -165,7 +202,7 @@ if __name__ == "__main__":
     window.gripContainer.addWidget(gripper,0,Qt.AlignLeft)
     window.op1.clicked.connect(lambda: window.stackedWidget.setCurrentWidget(window.page1))
     window.op2.clicked.connect(lambda: window.stackedWidget.setCurrentWidget(window.page2))
-    window.op3.clicked.connect(lambda: window.stackedWidget.setCurrentWidget(window.page3))
+    window.op3.clicked.connect(lambda: home_modo2())
     window.op4.clicked.connect(lambda: window.stackedWidget.setCurrentWidget(window.page4))
     window.btnJoint1pos.clicked.connect(lambda: moverJoints("a", 0))
     window.btnJoint1neg.clicked.connect(lambda: moverJoints("b", 0))
@@ -177,12 +214,29 @@ if __name__ == "__main__":
     window.btnJoint5neg.clicked.connect(lambda: moverJoints("b", 4))
     window.btnJoint6pos.clicked.connect(lambda: moverJoints("a", 5))
     window.btnJoint6neg.clicked.connect(lambda: moverJoints("b", 5))
+    #modo 2
+
+    window.posx.clicked.connect(lambda: moverJoints_modo2('a',0))
+    window.negx.clicked.connect(lambda: moverJoints_modo2('b',0))
+    window.posy.clicked.connect(lambda: moverJoints_modo2('a',1))
+    window.negy.clicked.connect(lambda: moverJoints_modo2('b',1))
+    window.posz.clicked.connect(lambda: moverJoints_modo2('a',2))
+    window.negz.clicked.connect(lambda: moverJoints_modo2('b',2))
+    window.posa.clicked.connect(lambda: moverJoints_modo2('a',3))
+    window.nega.clicked.connect(lambda: moverJoints_modo2('b',3))
+    window.posb.clicked.connect(lambda: moverJoints_modo2('a',4))
+    window.negb.clicked.connect(lambda: moverJoints_modo2('b',4))
+
+
+    #modo 3
     window.fun1.clicked.connect(lambda: funcion_1())
     window.fun2.clicked.connect(lambda: funcion_2())
     window.fun3.clicked.connect(lambda: funcion_3())
     window.fun4.clicked.connect(lambda: funcion_4())
     window.fun5.clicked.connect(lambda: funcion_5())
     window.fun6.clicked.connect(lambda: funcion_6())
+    window.desplazamiento_modo2.sliderReleased.connect(lambda : selec_desplazmiento2(window.desplazamiento_modo2.value()))
+
     gripper.clicked.connect(lambda: set_gripper(gripper.isChecked()))
     group_baud = QButtonGroup()
     group_baud.addButton(window.bau1)

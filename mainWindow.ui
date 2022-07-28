@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>838</width>
-    <height>504</height>
+    <height>517</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -951,14 +951,14 @@ background-color: #138D75;
                     </widget>
                    </item>
                    <item row="3" column="2" colspan="2">
-                    <widget class="QPushButton" name="pushButton_2">
+                    <widget class="QPushButton" name="nega">
                      <property name="text">
                       <string>NEGATIVO EN A</string>
                      </property>
                     </widget>
                    </item>
                    <item row="4" column="2" colspan="2">
-                    <widget class="QPushButton" name="pushButton_4">
+                    <widget class="QPushButton" name="negb">
                      <property name="text">
                       <string>NEGATIVO EN B</string>
                      </property>
@@ -974,7 +974,7 @@ background-color: #138D75;
                       </widget>
                      </item>
                      <item>
-                      <widget class="QSlider" name="horizontalSlider">
+                      <widget class="QSlider" name="velocidad_modo2">
                        <property name="maximumSize">
                         <size>
                          <width>200</width>
@@ -989,14 +989,14 @@ background-color: #138D75;
                     </layout>
                    </item>
                    <item row="2" column="0" colspan="2">
-                    <widget class="QPushButton" name="pushButton_18">
+                    <widget class="QPushButton" name="posz">
                      <property name="text">
                       <string>POSITIVO EN Z</string>
                      </property>
                     </widget>
                    </item>
                    <item row="1" column="0" colspan="2">
-                    <widget class="QPushButton" name="pushButton_16">
+                    <widget class="QPushButton" name="posy">
                      <property name="text">
                       <string>POSITIVO EN Y</string>
                      </property>
@@ -1010,7 +1010,7 @@ background-color: #138D75;
                     </widget>
                    </item>
                    <item row="0" column="0" colspan="2">
-                    <widget class="QPushButton" name="pushButton_5">
+                    <widget class="QPushButton" name="posx">
                      <property name="text">
                       <string>POSITIVO EN X</string>
                      </property>
@@ -1026,7 +1026,7 @@ background-color: #138D75;
                       </widget>
                      </item>
                      <item>
-                      <widget class="QSlider" name="horizontalSlider_2">
+                      <widget class="QSlider" name="desplazamiento_modo2">
                        <property name="maximumSize">
                         <size>
                          <width>200</width>
@@ -1048,35 +1048,35 @@ background-color: #138D75;
                     </widget>
                    </item>
                    <item row="0" column="2" colspan="2">
-                    <widget class="QPushButton" name="pushButton_15">
+                    <widget class="QPushButton" name="negx">
                      <property name="text">
                       <string>NEGATIVO EN X</string>
                      </property>
                     </widget>
                    </item>
                    <item row="4" column="0" colspan="2">
-                    <widget class="QPushButton" name="pushButton_3">
+                    <widget class="QPushButton" name="posb">
                      <property name="text">
                       <string>POSITIVO EN B</string>
                      </property>
                     </widget>
                    </item>
                    <item row="1" column="2" colspan="2">
-                    <widget class="QPushButton" name="pushButton_17">
+                    <widget class="QPushButton" name="negy">
                      <property name="text">
                       <string>NEGATIVO EN Y</string>
                      </property>
                     </widget>
                    </item>
                    <item row="3" column="0" colspan="2">
-                    <widget class="QPushButton" name="pushButton">
+                    <widget class="QPushButton" name="posa">
                      <property name="text">
                       <string>POSITIVO  EN A</string>
                      </property>
                     </widget>
                    </item>
                    <item row="2" column="2" colspan="2">
-                    <widget class="QPushButton" name="pushButton_19">
+                    <widget class="QPushButton" name="negz">
                      <property name="text">
                       <string>NEGATIVO EN Z</string>
                      </property>
@@ -1109,7 +1109,7 @@ background-color: #138D75;
                     </spacer>
                    </item>
                    <item row="10" column="1">
-                    <widget class="QLabel" name="label_34">
+                    <widget class="QLabel" name="des_modo2">
                      <property name="text">
                       <string>0,0</string>
                      </property>
