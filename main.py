@@ -59,7 +59,6 @@ def serialInit():
             ser.bytesize = serial.EIGHTBITS
             ser.timeout = 1
             ser.open()
-
             print("se conecto")
         except PermissionError:
             print("algo ocurrio mal")
@@ -172,6 +171,7 @@ def moverJoints_modo2(joint,i):
     string = '{}\r\n'.format(mensaje)
     print(string)
     ser.write(string.encode())
+    window.posicion_modo2.setText(str(juntas2))
     time.sleep(1)
     ser.write(b'1;1;EXECMVS PCOSIROP\r\n')
     # 1;1;EXECJCOSIROP=(50.00,50.00,30.00,0.00,50.00,10.00)
@@ -194,6 +194,7 @@ def moverJoints(joint, i):
     string = '{}\r\n'.format(mensaje)
     print(string)
     ser.write(string.encode())
+    window.posicion_modo1.setText(str(juntas))
     time.sleep(1)
     ser.write(b'1;1;EXECMOV JCOSIROP\r\n')
     # 1;1;EXECJCOSIROP=(50.00,50.00,30.00,0.00,50.00,10.00)

@@ -1008,13 +1008,6 @@ background-color: #138D75;
                      </property>
                     </widget>
                    </item>
-                   <item row="8" column="1">
-                    <widget class="QLabel" name="label_18">
-                     <property name="text">
-                      <string>(0,0,0,0,0,0,0)</string>
-                     </property>
-                    </widget>
-                   </item>
                    <item row="0" column="0" colspan="2">
                     <widget class="QPushButton" name="posx">
                      <property name="text">
@@ -1052,13 +1045,6 @@ background-color: #138D75;
                      </item>
                     </layout>
                    </item>
-                   <item row="8" column="2">
-                    <widget class="QLabel" name="label_24">
-                     <property name="text">
-                      <string>Gripper:</string>
-                     </property>
-                    </widget>
-                   </item>
                    <item row="0" column="2" colspan="2">
                     <widget class="QPushButton" name="negx">
                      <property name="text">
@@ -1094,9 +1080,6 @@ background-color: #138D75;
                      </property>
                     </widget>
                    </item>
-                   <item row="9" column="2">
-                    <layout class="QHBoxLayout" name="gripContainer"/>
-                   </item>
                    <item row="9" column="1">
                     <widget class="QLabel" name="label_33">
                      <property name="text">
@@ -1124,6 +1107,23 @@ background-color: #138D75;
                     <widget class="QLabel" name="des_modo2">
                      <property name="text">
                       <string>0,0</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="8" column="3">
+                    <widget class="QLabel" name="label_24">
+                     <property name="text">
+                      <string>Gripper:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="9" column="3">
+                    <layout class="QHBoxLayout" name="gripContainer"/>
+                   </item>
+                   <item row="8" column="1" colspan="2">
+                    <widget class="QLabel" name="posicion_modo2">
+                     <property name="text">
+                      <string>(0,0,0,0,0,0,0)</string>
                      </property>
                     </widget>
                    </item>
@@ -1330,13 +1330,6 @@ background-color: #138D75;
                      </property>
                     </widget>
                    </item>
-                   <item row="11" column="1">
-                    <widget class="QLabel" name="des_value">
-                     <property name="text">
-                      <string>0.0</string>
-                     </property>
-                    </widget>
-                   </item>
                    <item row="8" column="0">
                     <widget class="QPushButton" name="btnJoint5pos">
                      <property name="text">
@@ -1386,13 +1379,6 @@ background-color: #138D75;
                      </property>
                     </widget>
                    </item>
-                   <item row="12" column="1">
-                    <widget class="QLabel" name="vel_value">
-                     <property name="text">
-                      <string>0.0</string>
-                     </property>
-                    </widget>
-                   </item>
                    <item row="4" column="1">
                     <widget class="QPushButton" name="btnJoint2neg">
                      <property name="text">
@@ -1417,13 +1403,6 @@ background-color: #138D75;
                      </property>
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="10" column="1">
-                    <widget class="QLabel" name="label_27">
-                     <property name="text">
-                      <string>(0,0,0,0,0,)</string>
                      </property>
                     </widget>
                    </item>
@@ -1484,6 +1463,27 @@ background-color: #138D75;
                       </size>
                      </property>
                     </spacer>
+                   </item>
+                   <item row="10" column="1" colspan="3">
+                    <widget class="QLabel" name="posicion_modo1">
+                     <property name="text">
+                      <string>(0,0,0,0,0,)</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="11" column="1" colspan="2">
+                    <widget class="QLabel" name="des_value">
+                     <property name="text">
+                      <string>0.0</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="12" column="1" colspan="2">
+                    <widget class="QLabel" name="vel_value">
+                     <property name="text">
+                      <string>0.0</string>
+                     </property>
+                    </widget>
                    </item>
                   </layout>
                  </item>
