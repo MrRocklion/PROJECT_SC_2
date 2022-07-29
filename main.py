@@ -10,14 +10,16 @@ from CustomWidgetsPyhton.CustomSwitch import CSwitch
 
 ser = serial.Serial()
 global juntas
+global juntas2
 global des
 global des2
 global vel
 
 juntas = [0, 0, 0, 0, 0, 0]
+juntas2 =  [0, 0, 0, 0, 0, 0]
 vel = 0
 des = 1
-
+des2 = 1
 def holaMundo(val):
     print(f'hola {val}')
 
@@ -123,12 +125,21 @@ def  funcion_4():
     ser.write(b'1;1;RSTALRM\r\n')
     line = ser.readline()
     print(line)
-def home_modo2():
+def home_modo1():
     global juntas
+    ser.write(b'1;1;EXECJCOSIROP=(4,11.07,79.9,0,18.02,0)\r\n')
+    time.sleep(1)
+    ser.write(b'1;1;EXECMOV JCOSIROP\r\n')
+    juntas = [4,11.07,79.9,0,18.02,0]
+    line = ser.readline()
+    print(line)
+    window.stackedWidget.setCurrentWidget(window.page2)
+def home_modo2():
+    global juntas2
     ser.write(b'1;1;EXECPCOSIROP=(365,25.5,488.25,-1.3,109,6,0)\r\n')
     time.sleep(1)
     ser.write(b'1;1;EXECMVS PCOSIROP\r\n')
-    juntas = [365,25.5,488.25,-1.3,109,6,0]
+    juntas2 = [365,25.5,488.25,-1.3,109,6,0]
     line = ser.readline()
     print(line)
     window.stackedWidget.setCurrentWidget(window.page3)
@@ -145,19 +156,19 @@ def  funcion_6():
     line = ser.readline()
     print(line)
 def moverJoints_modo2(joint,i):
-    global juntas
+    global juntas2
     global des2
     if joint == "a":
-        if juntas[i] < 600:
-            juntas[i] = juntas[i] + des2
+        if juntas2[i] < 600:
+            juntas2[i] = juntas2[i] + des2
         else:
-            juntas[i] = 600
+            juntas2[i] = 600
     elif joint == "b":
-        if juntas[i] > -600:
-            juntas[i] = juntas[i] - des2
+        if juntas2[i] > -600:
+            juntas2[i] = juntas2[i] - des2
         else:
-            juntas[i] = -600
-    mensaje = "1;1;EXECPCOSIROP=({},{},{},{},{},6,0)".format(juntas[0], juntas[1], juntas[2], juntas[3], juntas[4])
+            juntas2[i] = -600
+    mensaje = "1;1;EXECPCOSIROP=({},{},{},{},{},6,0)".format(juntas2[0], juntas2[1], juntas2[2], juntas2[3], juntas2[4])
     string = '{}\r\n'.format(mensaje)
     print(string)
     ser.write(string.encode())
@@ -197,11 +208,12 @@ if __name__ == "__main__":
         sys.exit(-1)
     loader = QUiLoader()
     window = loader.load(ui_file)
-    gripper = CSwitch(active_color="#17A589")
-    window.gripper_container.addWidget(gripper,0,Qt.AlignCenter)
-    window.gripContainer.addWidget(gripper,0,Qt.AlignLeft)
+    gripper1 = CSwitch(active_color="#17A589")
+    gripper2 = CSwitch(active_color="#17A589")
+    window.gripper_container.addWidget(gripper1,0,Qt.AlignCenter)
+    window.gripContainer.addWidget(gripper2,0,Qt.AlignLeft)
     window.op1.clicked.connect(lambda: window.stackedWidget.setCurrentWidget(window.page1))
-    window.op2.clicked.connect(lambda: window.stackedWidget.setCurrentWidget(window.page2))
+    window.op2.clicked.connect(lambda:home_modo1())
     window.op3.clicked.connect(lambda: home_modo2())
     window.op4.clicked.connect(lambda: window.stackedWidget.setCurrentWidget(window.page4))
     window.btnJoint1pos.clicked.connect(lambda: moverJoints("a", 0))
@@ -237,7 +249,8 @@ if __name__ == "__main__":
     window.fun6.clicked.connect(lambda: funcion_6())
     window.desplazamiento_modo2.sliderReleased.connect(lambda : selec_desplazmiento2(window.desplazamiento_modo2.value()))
 
-    gripper.clicked.connect(lambda: set_gripper(gripper.isChecked()))
+    gripper1.clicked.connect(lambda: set_gripper(gripper1.isChecked()))
+    gripper2.clicked.connect(lambda: set_gripper(gripper2.isChecked()))
     group_baud = QButtonGroup()
     group_baud.addButton(window.bau1)
     group_baud.addButton(window.bau2)

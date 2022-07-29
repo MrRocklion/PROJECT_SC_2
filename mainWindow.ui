@@ -981,6 +981,12 @@ background-color: #138D75;
                          <height>16777215</height>
                         </size>
                        </property>
+                       <property name="minimum">
+                        <number>3</number>
+                       </property>
+                       <property name="maximum">
+                        <number>200</number>
+                       </property>
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
@@ -1032,6 +1038,12 @@ background-color: #138D75;
                          <width>200</width>
                          <height>16777215</height>
                         </size>
+                       </property>
+                       <property name="minimum">
+                        <number>1</number>
+                       </property>
+                       <property name="maximum">
+                        <number>50</number>
                        </property>
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
