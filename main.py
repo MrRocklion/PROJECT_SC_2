@@ -80,6 +80,23 @@ def set_gripper(estado):
         line = ser.readline()
         print(line)
 
+def seleccionar_velocidad_modo1(velocidad):
+    window.vel_value.setText(str(velocidad))
+    string = '1;1;EXECJOVRD {}\r\n'.format(velocidad)
+    ser.write(string.encode())
+    print(velocidad)
+    line = ser.readline()
+    print(line)
+
+def seleccionar_velocidad_modo2(velocidad):
+    window.velocidad2.setText(str(velocidad))
+    string = '1;1;EXECSPD {}\r\n'.format(velocidad)
+    ser.write(string.encode())
+    print(velocidad)
+    line = ser.readline()
+    print(line)
+
+
 
 def enviarComando():
     cmd = window.lineComand.text()
@@ -211,12 +228,14 @@ if __name__ == "__main__":
     window = loader.load(ui_file)
     gripper1 = CSwitch(active_color="#17A589")
     gripper2 = CSwitch(active_color="#17A589")
+    #monu lateral
     window.gripper_container.addWidget(gripper1,0,Qt.AlignCenter)
     window.gripContainer.addWidget(gripper2,0,Qt.AlignLeft)
     window.op1.clicked.connect(lambda: window.stackedWidget.setCurrentWidget(window.page1))
     window.op2.clicked.connect(lambda:home_modo1())
     window.op3.clicked.connect(lambda: home_modo2())
     window.op4.clicked.connect(lambda: window.stackedWidget.setCurrentWidget(window.page4))
+    #modo1
     window.btnJoint1pos.clicked.connect(lambda: moverJoints("a", 0))
     window.btnJoint1neg.clicked.connect(lambda: moverJoints("b", 0))
     window.btnJoint2pos.clicked.connect(lambda: moverJoints("a", 1))
@@ -227,6 +246,9 @@ if __name__ == "__main__":
     window.btnJoint5neg.clicked.connect(lambda: moverJoints("b", 4))
     window.btnJoint6pos.clicked.connect(lambda: moverJoints("a", 5))
     window.btnJoint6neg.clicked.connect(lambda: moverJoints("b", 5))
+    window.velSlider.sliderReleased.connect(lambda : seleccionar_velocidad_modo1(window.velSlider.value()))
+    window.reset1.clicked.connect(lambda: funcion_4())
+    window.emergencia1.clicked.connect(lambda: funcion_6())
     #modo 2
 
     window.posx.clicked.connect(lambda: moverJoints_modo2('a',0))
@@ -239,7 +261,8 @@ if __name__ == "__main__":
     window.nega.clicked.connect(lambda: moverJoints_modo2('b',3))
     window.posb.clicked.connect(lambda: moverJoints_modo2('a',4))
     window.negb.clicked.connect(lambda: moverJoints_modo2('b',4))
-
+    window.reset2.clicked.connect(lambda: funcion_4())
+    window.emergencia2.clicked.connect(lambda: funcion_6())
 
     #modo 3
     window.fun1.clicked.connect(lambda: funcion_1())
@@ -249,6 +272,7 @@ if __name__ == "__main__":
     window.fun5.clicked.connect(lambda: funcion_5())
     window.fun6.clicked.connect(lambda: funcion_6())
     window.desplazamiento_modo2.sliderReleased.connect(lambda : selec_desplazmiento2(window.desplazamiento_modo2.value()))
+    window.velocidad_modo2.sliderReleased.connect(lambda : seleccionar_velocidad_modo2(window.velocidad_modo2.value()))
 
     gripper1.clicked.connect(lambda: set_gripper(gripper1.isChecked()))
     gripper2.clicked.connect(lambda: set_gripper(gripper2.isChecked()))

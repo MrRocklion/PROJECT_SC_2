@@ -163,7 +163,51 @@ text-align: center;
 QPushButton:pressed{
 background-color: #138D75;
 }
-</string>
+#reset1{
+background-color: #F1C40F;
+color: rgb(0, 0, 0);
+text-align: center;
+}
+
+#reset1:pressed{
+background-color: #9A7D0A;
+color: rgb(255, 255, 255);
+}
+
+#emergencia1{
+background-color: #CB4335;
+color: rgb(0, 0, 0);
+text-align: center;
+}
+
+#emergencia1:pressed{
+background-color: #B03A2E;
+color: rgb(255, 255, 255);
+}
+
+#emergencia2{
+background-color: #CB4335;
+color: rgb(0, 0, 0);
+text-align: center;
+}
+
+#reset2{
+background-color: #F1C40F;
+color: rgb(0, 0, 0);
+text-align: center;
+}
+
+#reset2:pressed{
+background-color: #9A7D0A;
+color: rgb(255, 255, 255);
+}
+
+
+
+#emergencia2:pressed{
+background-color: #B03A2E;
+color: rgb(255, 255, 255);
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -985,7 +1029,7 @@ background-color: #138D75;
                         <number>3</number>
                        </property>
                        <property name="maximum">
-                        <number>200</number>
+                        <number>2200</number>
                        </property>
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
@@ -1081,7 +1125,7 @@ background-color: #138D75;
                     </widget>
                    </item>
                    <item row="9" column="1">
-                    <widget class="QLabel" name="label_33">
+                    <widget class="QLabel" name="velocidad2">
                      <property name="text">
                       <string>0,0</string>
                      </property>
@@ -1124,6 +1168,20 @@ background-color: #138D75;
                     <widget class="QLabel" name="posicion_modo2">
                      <property name="text">
                       <string>(0,0,0,0,0,0,0)</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="6" column="3">
+                    <widget class="QPushButton" name="reset2">
+                     <property name="text">
+                      <string>RESET</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="7" column="3">
+                    <widget class="QPushButton" name="emergencia2">
+                     <property name="text">
+                      <string>EMERGENCIA</string>
                      </property>
                     </widget>
                    </item>
@@ -1272,6 +1330,138 @@ background-color: #138D75;
                 <layout class="QHBoxLayout" name="horizontalLayout_12">
                  <item>
                   <layout class="QGridLayout" name="gridLayout_3">
+                   <item row="6" column="0">
+                    <widget class="QPushButton" name="btnJoint3pos">
+                     <property name="maximumSize">
+                      <size>
+                       <width>70</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>+</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0" colspan="2">
+                    <widget class="QLabel" name="label_3">
+                     <property name="text">
+                      <string>Joint1</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="9" column="1">
+                    <spacer name="verticalSpacer_5">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Fixed</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item row="11" column="1" colspan="2">
+                    <widget class="QLabel" name="des_value">
+                     <property name="text">
+                      <string>0.0</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="0">
+                    <widget class="QPushButton" name="btnJoint2pos">
+                     <property name="maximumSize">
+                      <size>
+                       <width>70</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>+</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="8" column="2" colspan="2">
+                    <widget class="QSlider" name="despSlider">
+                     <property name="minimum">
+                      <number>1</number>
+                     </property>
+                     <property name="maximum">
+                      <number>10</number>
+                     </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="1">
+                    <widget class="QPushButton" name="btnJoint2neg">
+                     <property name="text">
+                      <string>-</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="6" column="1">
+                    <widget class="QPushButton" name="btnJoint3neg">
+                     <property name="text">
+                      <string>-</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="10" column="1" colspan="3">
+                    <widget class="QLabel" name="posicion_modo1">
+                     <property name="text">
+                      <string>(0,0,0,0,0,)</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="0">
+                    <widget class="QLabel" name="label_19">
+                     <property name="text">
+                      <string>Joint3</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="10" column="0">
+                    <widget class="QLabel" name="label_22">
+                     <property name="text">
+                      <string>Posicion:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="2">
+                    <widget class="QPushButton" name="btnJoint6pos">
+                     <property name="text">
+                      <string>+</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QPushButton" name="btnJoint1neg">
+                     <property name="text">
+                      <string>-</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="7" column="0" colspan="2">
+                    <widget class="QLabel" name="label_20">
+                     <property name="text">
+                      <string>Joint5</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="12" column="1" colspan="2">
+                    <widget class="QLabel" name="vel_value">
+                     <property name="text">
+                      <string>0.0</string>
+                     </property>
+                    </widget>
+                   </item>
                    <item row="4" column="2" colspan="2">
                     <layout class="QHBoxLayout" name="gripper_container"/>
                    </item>
@@ -1289,17 +1479,36 @@ background-color: #138D75;
                      </property>
                     </widget>
                    </item>
+                   <item row="2" column="0">
+                    <widget class="QPushButton" name="btnJoint1pos">
+                     <property name="maximumSize">
+                      <size>
+                       <width>70</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>+</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="8" column="0">
+                    <widget class="QPushButton" name="btnJoint5pos">
+                     <property name="maximumSize">
+                      <size>
+                       <width>70</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>+</string>
+                     </property>
+                    </widget>
+                   </item>
                    <item row="2" column="3">
                     <widget class="QPushButton" name="btnJoint6neg">
                      <property name="text">
                       <string>-</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="3" column="2">
-                    <widget class="QLabel" name="label_15">
-                     <property name="text">
-                      <string>Gripper</string>
                      </property>
                     </widget>
                    </item>
@@ -1326,14 +1535,7 @@ background-color: #138D75;
                    <item row="11" column="0">
                     <widget class="QLabel" name="label_30">
                      <property name="text">
-                      <string>Desplazamiento:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="8" column="0">
-                    <widget class="QPushButton" name="btnJoint5pos">
-                     <property name="text">
-                      <string>+</string>
+                      <string>Desplaz:     </string>
                      </property>
                     </widget>
                    </item>
@@ -1344,13 +1546,6 @@ background-color: #138D75;
                      </property>
                     </widget>
                    </item>
-                   <item row="2" column="0">
-                    <widget class="QPushButton" name="btnJoint1pos">
-                     <property name="text">
-                      <string>+</string>
-                     </property>
-                    </widget>
-                   </item>
                    <item row="12" column="0">
                     <widget class="QLabel" name="label_28">
                      <property name="text">
@@ -1358,130 +1553,17 @@ background-color: #138D75;
                      </property>
                     </widget>
                    </item>
-                   <item row="1" column="0" colspan="2">
-                    <widget class="QLabel" name="label_3">
-                     <property name="text">
-                      <string>Joint1</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="5" column="0">
-                    <widget class="QLabel" name="label_19">
-                     <property name="text">
-                      <string>Joint3</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="4" column="0">
-                    <widget class="QPushButton" name="btnJoint2pos">
-                     <property name="text">
-                      <string>+</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="4" column="1">
-                    <widget class="QPushButton" name="btnJoint2neg">
-                     <property name="text">
-                      <string>-</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="1">
-                    <widget class="QPushButton" name="btnJoint1neg">
-                     <property name="text">
-                      <string>-</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="8" column="2" colspan="2">
-                    <widget class="QSlider" name="despSlider">
-                     <property name="minimum">
-                      <number>1</number>
-                     </property>
-                     <property name="maximum">
-                      <number>10</number>
-                     </property>
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="10" column="0">
-                    <widget class="QLabel" name="label_22">
-                     <property name="text">
-                      <string>Posicion:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="2">
+                   <item row="1" column="2" colspan="2">
                     <widget class="QLabel" name="label_21">
                      <property name="text">
                       <string>Joint6</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="2" column="2">
-                    <widget class="QPushButton" name="btnJoint6pos">
+                   <item row="3" column="2" colspan="2">
+                    <widget class="QLabel" name="label_15">
                      <property name="text">
-                      <string>+</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="7" column="0" colspan="2">
-                    <widget class="QLabel" name="label_20">
-                     <property name="text">
-                      <string>Joint5</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="6" column="1">
-                    <widget class="QPushButton" name="btnJoint3neg">
-                     <property name="text">
-                      <string>-</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="6" column="0">
-                    <widget class="QPushButton" name="btnJoint3pos">
-                     <property name="text">
-                      <string>+</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="9" column="1">
-                    <spacer name="verticalSpacer_5">
-                     <property name="orientation">
-                      <enum>Qt::Vertical</enum>
-                     </property>
-                     <property name="sizeType">
-                      <enum>QSizePolicy::Fixed</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>20</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="10" column="1" colspan="3">
-                    <widget class="QLabel" name="posicion_modo1">
-                     <property name="text">
-                      <string>(0,0,0,0,0,)</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="11" column="1" colspan="2">
-                    <widget class="QLabel" name="des_value">
-                     <property name="text">
-                      <string>0.0</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="12" column="1" colspan="2">
-                    <widget class="QLabel" name="vel_value">
-                     <property name="text">
-                      <string>0.0</string>
+                      <string>Gripper</string>
                      </property>
                     </widget>
                    </item>
@@ -1489,7 +1571,24 @@ background-color: #138D75;
                  </item>
                  <item>
                   <layout class="QGridLayout" name="gridLayout_4">
-                   <item row="4" column="0" colspan="2">
+                   <item row="2" column="1">
+                    <layout class="QHBoxLayout" name="horizontalLayout_18">
+                     <item>
+                      <widget class="QPushButton" name="emergencia1">
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>EMERGENCIA</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="0" column="1">
                     <widget class="QLabel" name="imagen1">
                      <property name="maximumSize">
                       <size>
@@ -1516,6 +1615,23 @@ background-color: #138D75;
                       <number>0</number>
                      </property>
                     </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <layout class="QHBoxLayout" name="horizontalLayout_20">
+                     <item>
+                      <widget class="QPushButton" name="reset1">
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>36</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>RESET</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
                    </item>
                   </layout>
                  </item>
